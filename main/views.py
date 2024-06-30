@@ -24,11 +24,11 @@ def index(request):
             # Extract necessary data
             data = { 
                 "country_code": str(list_of_data['sys']['country']), 
-                "coordinate": str(list_of_data['coord']['lon']) + ' '
-                              + str(list_of_data['coord']['lat']), 
-                "temp": str(list_of_data['main']['temp']) + 'k', 
-                "pressure": str(list_of_data['main']['pressure']), 
-                "humidity": str(list_of_data['main']['humidity']), 
+                "coordinate": f"{list_of_data['coord']['lon']} lon" + ' '
+                              + f"{list_of_data['coord']['lat']} lan", 
+                "temp": "{:.2f}°C".format(list_of_data['main']['temp'] - 273.15),
+                "pressure": f"{list_of_data['main']['pressure'] / 100000} bar",
+                "humidity": f"{list_of_data['main']['humidity']}%",
             } 
             print(data)
         except Exception as e:
